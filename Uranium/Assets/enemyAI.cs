@@ -15,7 +15,7 @@ public class enemyAI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         switchTimer += Time.deltaTime;
-        if (switchTimer == 5f)
+        if (switchTimer >= 4f)
         {
             moveBehaviour_Direct = !moveBehaviour_Direct;
             switchTimer = 0;

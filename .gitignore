@@ -33,3 +33,12 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+*.cache
+Uranium/Temp/UnityLockfile
+*.backup
+Uranium/Temp/UnityTempFile-c5b4020446bab48428393aef3684ae24
+*.log
+*.log
+*.txt
+*.unity
+*.meta
