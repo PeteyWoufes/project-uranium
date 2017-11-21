@@ -6,6 +6,7 @@ public class enemyAI : MonoBehaviour {
     public float speed;
     public Transform target;
     public float switchTimer;
+    public string moveType;
     
     // PeteyWoufes, 21/11/17
 
