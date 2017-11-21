@@ -6,26 +6,18 @@ public class enemyAI : MonoBehaviour {
     public float speed;
     public Transform target;
     public float switchTimer;
-    public bool moveBehaviour_Direct;
-	// Use this for initialization
-	void Start () {
+    
+    // PeteyWoufes, 21/11/17
+
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        switchTimer += Time.deltaTime;
-        if (switchTimer >= 4f)
-        {
-            moveBehaviour_Direct = !moveBehaviour_Direct;
-            switchTimer = 0;
-
-        }
-        if (moveBehaviour_Direct == true)
-            MoveDirect();
-
-        if (moveBehaviour_Direct == false)
-            MoveLeft();
+        // switchTimer += Time.deltaTime; // will use for flight pattern switching eventually
+        MoveTo();
+        // Replacing MoveDirect() and MoveLeft() for simplicity reasons
     }
 
     void DeathCheck ()
@@ -42,15 +34,38 @@ public class enemyAI : MonoBehaviour {
         }
     }
 
-    void MoveDirect()
+    void MoveTo()
     {
-        float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+        if (moveType == "Right")
+        {
+            float step = -speed * Time.deltaTime;
+            transform.Translate(step, 0, 0);
+        }
+
+        if (moveType == "Left")
+        {
+            float step = speed * Time.deltaTime;
+            transform.Translate(step, 0, 0);
+        }
+
+        if (moveType == "Up")
+        {
+            float step = speed * Time.deltaTime;
+            transform.Translate(0, step, 0);
+        }
+
+        if (moveType == "Down")
+        {
+            float step = -speed * Time.deltaTime;
+            transform.Translate(0, step, 0);
+        }
+
+        if (moveType == "Direct")
+        {
+            float step = speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+        }
     }
 
-    void MoveLeft()
-    {
-        float step = speed * Time.deltaTime;
-        transform.Translate(step, 0, 0);
-    }
+    
 }
