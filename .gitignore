@@ -44,3 +44,12 @@ Uranium/Temp/UnityTempFile-c5b4020446bab48428393aef3684ae24
 *.meta
 *.unity
 *.ide
+*.prefab
+*.ide
+Uranium/builds/itscoldoutside_Data/globalgamemanagers
+*.assets
+Uranium/builds/itscoldoutside_Data/Managed/Assembly-CSharp.dll
+Uranium/builds/itscoldoutside_Data/Managed/Assembly-CSharp.dll.mdb
+Uranium/builds/itscoldoutside_Data/sharedassets0.assets
+Uranium/builds/itscoldoutside_Data/sharedassets0.assets.resS
+*.exe

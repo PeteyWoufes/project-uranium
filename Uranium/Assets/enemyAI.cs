@@ -6,7 +6,10 @@ public class enemyAI : MonoBehaviour {
     public float speed;
     public Transform target;
     public float switchTimer;
+    public float formationTimer;
     public string moveType;
+    public string moveFormation;
+    private bool goingUp;
     
     // PeteyWoufes, 21/11/17
 
@@ -19,11 +22,7 @@ public class enemyAI : MonoBehaviour {
         // switchTimer += Time.deltaTime; // will use for flight pattern switching eventually
         MoveTo();
         // Replacing MoveDirect() and MoveLeft() for simplicity reasons
-    }
-
-    void DeathCheck ()
-    {
-        
+        Formation();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -37,13 +36,13 @@ public class enemyAI : MonoBehaviour {
 
     void MoveTo()
     {
-        if (moveType == "Right")
+        if (moveType == "Left")
         {
             float step = -speed * Time.deltaTime;
             transform.Translate(step, 0, 0);
         }
 
-        if (moveType == "Left")
+        if (moveType == "Right")
         {
             float step = speed * Time.deltaTime;
             transform.Translate(step, 0, 0);
@@ -66,6 +65,30 @@ public class enemyAI : MonoBehaviour {
             float step = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, target.position, step);
         }
+    }
+
+    void Formation()
+    {
+        if (moveFormation == "Zigzag")
+        {
+            formationTimer += Time.deltaTime;
+            if (formationTimer >= 0.75f)
+            {
+                goingUp = !goingUp;
+                formationTimer = 0;
+            }
+            if (goingUp == true)
+            {
+                moveType = "Up";
+            }
+            else
+            {
+                moveType = "Direct";
+            }
+
+        }
+
+        
     }
 
     
