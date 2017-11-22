@@ -53,3 +53,9 @@ Uranium/builds/itscoldoutside_Data/Managed/Assembly-CSharp.dll.mdb
 Uranium/builds/itscoldoutside_Data/sharedassets0.assets
 Uranium/builds/itscoldoutside_Data/sharedassets0.assets.resS
 *.exe
+*.ide
+*.ide
+*.prefab
+*.unity
+*.png
+Uranium/.vs/Uranium/v15/sqlite3/storage.ide
