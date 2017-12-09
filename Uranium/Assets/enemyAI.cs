@@ -75,15 +75,17 @@ public class enemyAI : MonoBehaviour {
         {
             formationTimer += Time.deltaTime;
 
-            if (formationTimer >= 0.75f)
+            if (formationTimer >= 0.15f)
             {
+                float step = speed * Time.deltaTime;
+                
                 goingUp = !goingUp;
                 formationTimer = 0;
             }
 
             if (goingUp == true)
             {
-                moveType = "Up";
+                transform.Translate(1, 1, 0);
             }
 
             else

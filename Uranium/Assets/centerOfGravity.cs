@@ -11,6 +11,9 @@ public class centerOfGravity : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Rotate(0, 0.2f * Time.deltaTime, 0.1f);
+        if (Time.timeScale == 1)
+        {
+            transform.Rotate(0, 0.2f * Time.deltaTime, 0.1f);
+        }
     }
 }

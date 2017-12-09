@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class pauseMenu : MonoBehaviour {
     public bool isPaused;
+    public GameObject pauseMenuUI;
 	// Use this for initialization
 	void Start () {
 		
@@ -22,10 +24,20 @@ public class pauseMenu : MonoBehaviour {
             isPaused = !isPaused;
         }
 
-        if (isPaused)
+        if (isPaused) { 
             Time.timeScale = 0;
+        pauseMenuUI.SetActive(true);
+        }   
 
         if (isPaused == false)
+        {
             Time.timeScale = 1;
+            pauseMenuUI.SetActive(false);
+        }
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

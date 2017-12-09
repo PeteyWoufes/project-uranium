@@ -35,6 +35,7 @@ sysinfo.txt
 *.unitypackage
 *.cache
 Uranium/Temp/UnityLockfile
+Uranium/Temp
 *.backup
 Uranium/Temp/UnityTempFile-c5b4020446bab48428393aef3684ae24
 *.log
@@ -221,3 +222,7 @@ Uranium/Library/metadata/78/78b5297f941f9d6418d3fd5f2dd9acb0
 Uranium/Library/metadata/00/00797bdbf19397a47be005d224024009
 Uranium/Library/metadata/03/032d84b7eca55704f9df7e7764bd753c
 *.physicsMaterial2D
+*.meta
+*.meta
+Uranium/Assets/GunPointer.cs.meta
+*.ttf
