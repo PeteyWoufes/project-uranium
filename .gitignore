@@ -52,6 +52,7 @@ Uranium/builds/itscoldoutside_Data/Managed/Assembly-CSharp.dll
 Uranium/builds/itscoldoutside_Data/Managed/Assembly-CSharp.dll.mdb
 Uranium/builds/itscoldoutside_Data/sharedassets0.assets
 Uranium/builds/itscoldoutside_Data/sharedassets0.assets.resS
+Uranium/Library
 *.exe
 *.ide
 *.ide
@@ -217,3 +218,6 @@ Uranium/Temp/UnityTempFile-dff059b22282e9b4ea2c926add66fb61
 Uranium/Temp/UnityTempFile-fd97500b58ca6864a82bdb8746680973
 Uranium/Temp/UnityTempFile-5e844b1cb7615d145b33b4bfd5705290
 Uranium/Library/metadata/78/78b5297f941f9d6418d3fd5f2dd9acb0
+Uranium/Library/metadata/00/00797bdbf19397a47be005d224024009
+Uranium/Library/metadata/03/032d84b7eca55704f9df7e7764bd753c
+*.physicsMaterial2D

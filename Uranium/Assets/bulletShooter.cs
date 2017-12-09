@@ -20,12 +20,17 @@ public class bulletShooter : MonoBehaviour {
     
     void BulletCheck ()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Time.timeScale == 1)
         {
-            curScreenPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Rigidbody2D instance = Instantiate(bullet, barrel.transform.position, barrel.transform.rotation) as Rigidbody2D;
-            Vector2 fwd = curScreenPoint -= new Vector2(0, 0);
-            instance.AddForce(fwd * bulSpeed);
+            if (Input.GetButtonDown("Fire1"))
+            {
+                curScreenPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Rigidbody2D instance = Instantiate(bullet, barrel.transform.position, barrel.transform.rotation) as Rigidbody2D;
+                Vector2 fwd = curScreenPoint -= new Vector2(0, 0);
+                instance.AddForce(fwd * bulSpeed);
+            }
+
         }
+       
     }
 }

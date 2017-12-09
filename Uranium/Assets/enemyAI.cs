@@ -2,21 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class enemyAI : MonoBehaviour {
 
+    public EnemyManager enemyManager;
     public Transform target;
     public float speed;
     public float switchTimer;
     public float formationTimer;
     public string moveType;
     public string moveFormation;
+    public string enemyType;
     private bool goingUp;
+    
     
     // PeteyWoufes, 22/11/17
 
 	void Update () {
         MoveCheck();
         FormationCheck();
+        EnemyTypeCheck();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -24,6 +29,8 @@ public class enemyAI : MonoBehaviour {
         if (other.CompareTag("Bullet"))
         {
             Destroy(other.gameObject);
+            enemyManager.enemyKillCount += 1;
+            enemyManager.difficultyNumber += 1;
             Destroy(gameObject);
         }
     }
@@ -86,10 +93,22 @@ public class enemyAI : MonoBehaviour {
 
         }
 
-        
+        if (moveFormation == "Orbit")
+        {
+            transform.RotateAround(Vector2.zero, -Vector3.forward, 90 * Time.deltaTime);
+        }
 
-        
     }
+
+    void EnemyTypeCheck()
+    {
+        if (enemyType == "Rotatatron")
+        {
+            transform.Rotate(Vector3.back);
+        }
+    }
+
+    
 
     
 }
