@@ -7,10 +7,12 @@ public class bulletShooter : MonoBehaviour {
     public Transform barrel;
     public Vector2 curScreenPoint;
     public float bulSpeed;
+    public bool isAlive;
+    public playerScript playerScript;
     
 	// Use this for initialization
 	void Start () {
-		
+        isAlive = true;
 	}
 	
 	// Update is called once per frame
@@ -32,5 +34,15 @@ public class bulletShooter : MonoBehaviour {
 
         }
        
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            isAlive = false;
+            playerScript.isAliveAnim = false;
+            
+        }
     }
 }

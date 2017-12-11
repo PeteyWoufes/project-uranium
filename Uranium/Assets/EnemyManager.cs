@@ -10,14 +10,18 @@ public class EnemyManager : MonoBehaviour {
     public Transform[] spawnPoints;
     public int enemyKillCount;
     public Text score;
+    public Text highScore;
+    public int highestKillCount;
     public float difficultyNumber;
+    string highScoreKey = "HighScore";
     // Use this for initialization
     void Start () {
 
         InvokeRepeating("Spawn", spawnTime, spawnTime);
+        highestKillCount = PlayerPrefs.GetInt(highScoreKey, 0);
 
 
-	}
+    }
 	
 	// Update is called once per frame
 	void Spawn () {
@@ -29,6 +33,7 @@ public class EnemyManager : MonoBehaviour {
     void ScoreCheck()
     {
         score.text = "Enemies killed: " + enemyKillCount;
+        highScore.text = "High score: " + highestKillCount;
     }
 
     private void Update()
@@ -47,5 +52,14 @@ public class EnemyManager : MonoBehaviour {
             difficultyNumber = 0;
         }
 
+    }
+
+    private void OnDisable()
+    {
+        if (enemyKillCount > highestKillCount)
+        {
+            PlayerPrefs.SetInt(highScoreKey, enemyKillCount);
+            PlayerPrefs.Save();
+        }
     }
 }
