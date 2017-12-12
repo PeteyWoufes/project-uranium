@@ -34,6 +34,11 @@ public class EnemyManager : MonoBehaviour {
     {
         score.text = "Enemies killed: " + enemyKillCount;
         highScore.text = "High score: " + highestKillCount;
+        if (enemyKillCount > highestKillCount)
+        {
+            PlayerPrefs.SetInt(highScoreKey, enemyKillCount);
+            PlayerPrefs.Save();
+        }
     }
 
     private void Update()
@@ -56,10 +61,6 @@ public class EnemyManager : MonoBehaviour {
 
     private void OnDisable()
     {
-        if (enemyKillCount > highestKillCount)
-        {
-            PlayerPrefs.SetInt(highScoreKey, enemyKillCount);
-            PlayerPrefs.Save();
-        }
+       
     }
 }

@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class pauseMenu : MonoBehaviour {
     public bool isPaused;
     public GameObject pauseMenuUI;
+   
 	// Use this for initialization
 	void Start () {
 		

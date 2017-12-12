@@ -14,11 +14,13 @@ public class enemyAI : MonoBehaviour {
     public string moveFormation;
     public string enemyType;
     private bool goingUp;
-    
-    
+    public Animator anim;
+    public bool laserEnabled;
+
+
     // PeteyWoufes, 22/11/17
 
-	void Update () {
+    void Update () {
         MoveCheck();
         FormationCheck();
         EnemyTypeCheck();
@@ -107,6 +109,36 @@ public class enemyAI : MonoBehaviour {
         if (enemyType == "Rotatatron")
         {
             transform.Rotate(Vector3.back);
+        }
+
+        if (enemyType == "laserCannon")
+        {
+            transform.right = target.position - transform.position;
+            if ((target.position.x - transform.position.x) <= 10f)
+            {
+                laserEnabled = true;
+            }
+
+            //if (Input.GetKey(KeyCode.J))
+            //{
+                
+               // laserEnabled = true;
+          //  }
+            else
+            {
+               
+                laserEnabled = false;
+            }
+
+            if (laserEnabled == true)
+            {
+                anim.SetBool("laserEnabled", true);
+            }
+
+            else
+            {
+                anim.SetBool("laserEnabled", false);
+            }
         }
     }
 

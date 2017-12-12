@@ -18,6 +18,7 @@ public class bulletShooter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         BulletCheck();
+        
 	}
     
     void BulletCheck ()
@@ -36,12 +37,18 @@ public class bulletShooter : MonoBehaviour {
        
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnColliderEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
             isAlive = false;
-            playerScript.isAliveAnim = false;
+            
+            
+        }
+
+        else if (other.CompareTag("Laser"))
+        {
+            isAlive = false;
             
         }
     }
