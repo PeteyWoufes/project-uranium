@@ -9,6 +9,7 @@ public class playerScript : MonoBehaviour {
     public float deathTimer;
     public pauseMenu pauseMenu;
     public bulletShooter bs;
+    public GameObject deathUI;
     // Use this for initialization
     void Start () {
         anim = gameObject.GetComponent<Animator>();
@@ -16,6 +17,7 @@ public class playerScript : MonoBehaviour {
         anim.SetBool("isAlive", true);
         isAliveAnim = true;
         deathTimer = 0f;
+        deathUI.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -30,9 +32,10 @@ public class playerScript : MonoBehaviour {
             deathTimer += Time.deltaTime;
             
         }
-        if (deathTimer == 2.2f)
+        if (deathTimer >= 2.2f)
         {
-            
+            Time.timeScale = 0;
+            deathUI.SetActive(true);
         }
 
     }
