@@ -114,9 +114,14 @@ public class enemyAI : MonoBehaviour {
         if (enemyType == "laserCannon")
         {
             transform.right = target.position - transform.position;
-            if ((target.position.x - transform.position.x) <= 10f)
+            if ((transform.position.x - target.position.x) <= 6.5f)
             {
                 laserEnabled = true;
+            }
+
+            if ((transform.position.x - target.position.x) <= 3.92f)
+            {
+                speed = 0;
             }
 
             //if (Input.GetKey(KeyCode.J))
