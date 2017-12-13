@@ -10,6 +10,7 @@ public class enemyAI : MonoBehaviour {
     public float speed;
     public float switchTimer;
     public float formationTimer;
+    private float distance;
     public string moveType;
     public string moveFormation;
     public string enemyType;
@@ -114,12 +115,14 @@ public class enemyAI : MonoBehaviour {
         if (enemyType == "laserCannon")
         {
             transform.right = target.position - transform.position;
-            if ((transform.position.x - target.position.x) <= 6.5f)
+            distance = Vector2.Distance(transform.position, target.position);
+            if (distance <= 6.5f)
             {
                 laserEnabled = true;
             }
 
-            if ((transform.position.x - target.position.x) <= 3.92f)
+
+            if (distance <= 3.92f)
             {
                 speed = 0;
             }
