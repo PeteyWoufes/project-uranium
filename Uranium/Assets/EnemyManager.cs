@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour {
-    public GameObject enemy;
+    public GameObject[] enemy;
     public enemyAI enemyAI;
     public float spawnTime = 3f;
     public Transform[] spawnPoints;
@@ -26,8 +26,9 @@ public class EnemyManager : MonoBehaviour {
 	// Update is called once per frame
 	void Spawn () {
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
+        int enemySpawnIndex = Random.Range(0, enemy.Length);
 
-        Instantiate(enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+        Instantiate(enemy[enemySpawnIndex], spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
 	}
 
     void ScoreCheck()
@@ -55,7 +56,10 @@ public class EnemyManager : MonoBehaviour {
             spawnTime *= 0.80f;
             enemyAI.speed *= 1.2f;
             difficultyNumber = 0;
+           
         }
+
+        
 
     }
 
