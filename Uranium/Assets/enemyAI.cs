@@ -36,7 +36,15 @@ public class enemyAI : MonoBehaviour {
             enemyManager.difficultyNumber += 1;
             Destroy(gameObject);
         }
+
+        if (other.CompareTag("Moon"))
+        {
+            Destroy(gameObject);
+        }
+
     }
+
+    
 
     void MoveCheck()
     {
