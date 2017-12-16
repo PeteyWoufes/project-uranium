@@ -16,11 +16,8 @@ public class EnemyManager : MonoBehaviour {
     string highScoreKey = "HighScore";
     // Use this for initialization
     void Start () {
-
         InvokeRepeating("Spawn", spawnTime, spawnTime);
         highestKillCount = PlayerPrefs.GetInt(highScoreKey, 0);
-
-
     }
 	
 	// Update is called once per frame

@@ -26,6 +26,7 @@ public class playerScript : MonoBehaviour {
         if (isAliveAnim == false)
         {
             anim.SetBool("isAlive", false);
+            Camera.main.GetComponent<CameraControl>().Shake(15.5f, 50, 0.5f);
         }
         if (isAliveAnim == false)
         {
@@ -36,6 +37,7 @@ public class playerScript : MonoBehaviour {
         {
             Time.timeScale = 0;
             deathUI.SetActive(true);
+            
         }
 
     }
