@@ -226,3 +226,5 @@ Uranium/Library/metadata/03/032d84b7eca55704f9df7e7764bd753c
 *.meta
 Uranium/Assets/GunPointer.cs.meta
 *.ttf
+Uranium/Assets/Scripts/CameraControl.cs
+*.otf

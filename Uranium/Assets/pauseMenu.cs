@@ -45,10 +45,12 @@ public class pauseMenu : MonoBehaviour {
     public void Quit()
     {
         Application.Quit();
+        Debug.Log("Quit button pressed.");
     }
 
     public void Restart()
     {
         SceneManager.LoadScene(Application.loadedLevel);
+        Debug.Log("Restart button pressed");
     }
 }

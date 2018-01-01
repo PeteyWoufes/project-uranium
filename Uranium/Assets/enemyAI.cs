@@ -17,6 +17,10 @@ public class enemyAI : MonoBehaviour {
     private bool goingUp;
     public Animator anim;
     public bool laserEnabled;
+    //public bool isAlive;
+    public Rigidbody2D rb2d;
+    public Vector3 vector;
+    //float deathTimer;
 
 
     // PeteyWoufes, 22/11/17
@@ -34,6 +38,7 @@ public class enemyAI : MonoBehaviour {
             Destroy(other.gameObject);
             enemyManager.enemyKillCount += 1;
             enemyManager.difficultyNumber += 1;
+            //isAlive = false;
             Destroy(gameObject);
         }
 
@@ -106,9 +111,17 @@ public class enemyAI : MonoBehaviour {
 
         }
 
-        if (moveFormation == "Orbit")
+        if (moveFormation == "Flyby")
         {
-            transform.RotateAround(Vector2.zero, -Vector3.forward, 90 * Time.deltaTime);
+            //transform.right = target.position - transform.position;
+            transform.Rotate(Vector3.forward * Time.deltaTime, 0.07f);
+            rb2d.AddForce(transform.up * (Time.deltaTime * 10f));
+            //float x = 50f * Time.deltaTime;
+            //rb2d.AddTorque(1f);
+
+
+
+
         }
 
     }
@@ -156,9 +169,27 @@ public class enemyAI : MonoBehaviour {
                 anim.SetBool("laserEnabled", false);
             }
         }
+
+        //if (isAlive == false)
+        //{ 
+            //deathTimer += Time.deltaTime;
+            //anim.SetBool("isAliveAnim", false);
+           // if (deathTimer >= 2f)
+            //{
+            //    Destroy(gameObject);
+           // }
+        //}
     }
 
-    
+    private void Start()
+    {
+        if (moveFormation == "Flyby")
+        {
+            transform.up = target.position - transform.position;
+        }
+    }
 
-    
+
+
+
 }

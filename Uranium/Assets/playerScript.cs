@@ -26,7 +26,7 @@ public class playerScript : MonoBehaviour {
         if (isAliveAnim == false)
         {
             anim.SetBool("isAlive", false);
-            Camera.main.GetComponent<CameraControl>().Shake(15.5f, 50, 0.5f);
+            Camera.main.GetComponent<CameraControl>().Shake(150.5f, 150, 0.75f);
         }
         if (isAliveAnim == false)
         {
