@@ -4,17 +4,6 @@ using UnityEngine;
 
 public class bulletKillzone : MonoBehaviour {
 
-    // Use this for initialization
-    void Start() {
-
-    }
-
-    // Update is called once per frame
-    void Update() {
-
-       
-    }
-
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Bullet"))
@@ -22,4 +11,5 @@ public class bulletKillzone : MonoBehaviour {
             Destroy(other.gameObject);
         }
     }
+
 }

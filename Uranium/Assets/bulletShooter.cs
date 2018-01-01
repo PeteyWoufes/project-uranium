@@ -8,14 +8,11 @@ public class bulletShooter : MonoBehaviour {
     public Vector2 curScreenPoint;
     public float bulSpeed;
     public bool isAlive;
-    public playerScript playerScript;
-    
-	// Use this for initialization
+
 	void Start () {
         isAlive = true;
 	}
 	
-	// Update is called once per frame
 	void Update () {
         BulletCheck();
         

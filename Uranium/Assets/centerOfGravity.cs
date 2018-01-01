@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class centerOfGravity : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         if (Time.timeScale == 1)
         {
             transform.Rotate(0, 0.2f * Time.deltaTime, 0.1f);
         }
     }
+
 }

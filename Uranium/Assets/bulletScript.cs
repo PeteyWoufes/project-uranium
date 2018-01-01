@@ -5,17 +5,13 @@ using UnityEngine;
 public class bulletScript : MonoBehaviour {
     public float lifeTimer;
     public float lifeLimit;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        lifeCycle();
+
+	void Update ()
+    {
+        lifeTimerCheck();
 	}
 
-    void lifeCycle()
+    void lifeTimerCheck()
     {
         lifeTimer += Time.deltaTime;
         if (lifeTimer >= lifeLimit)

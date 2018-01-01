@@ -9,13 +9,7 @@ public class pauseMenu : MonoBehaviour {
     public bool isPaused;
     public GameObject pauseMenuUI;
     public playerScript pS;
-   
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
-	// Update is called once per frame
 	void Update () {
         PauseCheck();
 	}
@@ -26,18 +20,17 @@ public class pauseMenu : MonoBehaviour {
         {
             isPaused = !isPaused;
         }
-
-        if (isPaused) { 
+        if (isPaused == true)
+        {
             Time.timeScale = 0;
-        pauseMenuUI.SetActive(true);
-        }   
-
+            pauseMenuUI.SetActive(true);
+        }
         if (isPaused == false)
         {
-            if (pS.deathTimer <= 2.2f) {
+            if (pS.deathTimer <= 2.2f)
+            {
                 Time.timeScale = 1;
             }
-            
             pauseMenuUI.SetActive(false);
         }
     }

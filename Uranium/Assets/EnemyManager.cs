@@ -14,17 +14,15 @@ public class EnemyManager : MonoBehaviour {
     public int highestKillCount;
     public float difficultyNumber;
     string highScoreKey = "HighScore";
-    // Use this for initialization
+
     void Start () {
         InvokeRepeating("Spawn", spawnTime, spawnTime);
         highestKillCount = PlayerPrefs.GetInt(highScoreKey, 0);
     }
 	
-	// Update is called once per frame
 	void Spawn () {
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
         int enemySpawnIndex = Random.Range(0, enemy.Length);
-
         Instantiate(enemy[enemySpawnIndex], spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
 	}
 
@@ -47,21 +45,11 @@ public class EnemyManager : MonoBehaviour {
 
     void DifficultyCheck()
     { 
-       
         if (difficultyNumber > 12)
         {
             spawnTime *= 0.80f;
             enemyAI.speed *= 1.2f;
             difficultyNumber = 0;
-           
         }
-
-        
-
-    }
-
-    private void OnDisable()
-    {
-       
     }
 }
