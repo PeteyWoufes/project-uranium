@@ -83,8 +83,8 @@ public class enemyAI : MonoBehaviour {
     {
         if (moveFormation == "Flyby")
         {
-            transform.Rotate(Vector3.forward * Time.deltaTime, 0.065f);
-            rb2d.AddForce(transform.up * (Time.deltaTime * speed));
+            transform.Rotate(Vector3.forward * Time.deltaTime, 0.04f);
+            rb2d.AddForce(transform.right * (Time.deltaTime * speed));
         }
     }
 
@@ -127,7 +127,7 @@ public class enemyAI : MonoBehaviour {
     {
         if (moveFormation == "Flyby")
         {
-            transform.up = target.position - transform.position;
+            transform.right = target.position - transform.position;
         }
     }
 
