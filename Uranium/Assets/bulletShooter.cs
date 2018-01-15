@@ -3,18 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class bulletShooter : MonoBehaviour {
+    public GameObject laser;
     public Rigidbody2D bullet;
     public Transform barrel;
     public Vector2 curScreenPoint;
     public float bulSpeed;
     public bool isAlive;
+    public bool laserOn;
+    public int laserAmmo;
+    public float readyTimer;
+    public AudioSource audioSource;
+    
 
-	void Start () {
+    void Start () {
         isAlive = true;
 	}
 	
 	void Update () {
         BulletCheck();
+        LaserCheck();
+        Debug.Log(laserAmmo);
+        
         
 	}
     
@@ -27,10 +36,33 @@ public class bulletShooter : MonoBehaviour {
                 curScreenPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Rigidbody2D instance = Instantiate(bullet, barrel.transform.position, barrel.transform.rotation) as Rigidbody2D;
                 Vector2 fwd = curScreenPoint -= new Vector2(0, 0);
-                instance.AddForce(fwd * bulSpeed);
+                instance.AddForce(fwd * (bulSpeed));
+                audioSource.Play();
             }
 
-        }
+
+            if (Input.GetButton("Fire2"))
+            {
+                if (laserAmmo != 0)
+                {
+                    laser.SetActive(true);
+                    laserAmmo -= 1;
+                    laserOn = true;
+                }
+            }
+            else
+            {
+                laser.SetActive(false);
+
+            }
+            if (laserAmmo == 0)
+            {
+                laser.SetActive(false);
+            }
+            
+         }
+          
+        
        
     }
 
@@ -48,5 +80,17 @@ public class bulletShooter : MonoBehaviour {
             isAlive = false;
             
         }
+    }
+    private void LaserCheck()
+    {
+        if (laserAmmo <= 0)
+            laserAmmo = 0;
+        if (laserAmmo >= 100)
+            laserAmmo = 100;
+
+    
+
+
+            
     }
 }

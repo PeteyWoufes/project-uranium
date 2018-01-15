@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour {
+    public bulletShooter bS;
     public GameObject[] enemy;
     public enemyAI enemyAI;
     public float spawnTime = 3f;

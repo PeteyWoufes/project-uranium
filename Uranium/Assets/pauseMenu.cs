@@ -43,7 +43,7 @@ public class pauseMenu : MonoBehaviour {
 
     public void Restart()
     {
-        SceneManager.LoadScene(Application.loadedLevel);
+        SceneManager.LoadScene(1);
         Debug.Log("Restart button pressed");
     }
 }

@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 public class enemyAI : MonoBehaviour {
 
+    float spawnTimer;
     public EnemyManager enemyManager;
+    public GameObject enemy;
     public Transform target;
     public float speed;
     private float distance;
@@ -16,6 +19,7 @@ public class enemyAI : MonoBehaviour {
     public bool laserEnabled;
     public Rigidbody2D rb2d;
     public Vector3 vector;
+    public bulletShooter bS;
 
 
     // PeteyWoufes, 22/11/17
@@ -33,12 +37,18 @@ public class enemyAI : MonoBehaviour {
             Destroy(other.gameObject);
             enemyManager.enemyKillCount += 1;
             enemyManager.difficultyNumber += 1;
+            bS.laserAmmo += 10;
             Destroy(gameObject);
         }
 
         if (other.CompareTag("Moon"))
         {
             Destroy(gameObject);
+        }
+        if (other.CompareTag("laserBeam"))
+        {
+            Destroy(gameObject);
+            bS.laserAmmo += 10;
         }
 
     }
@@ -85,6 +95,17 @@ public class enemyAI : MonoBehaviour {
         {
             transform.Rotate(Vector3.forward * Time.deltaTime, 0.04f);
             rb2d.AddForce(transform.right * (Time.deltaTime * speed));
+            distance = Vector2.Distance(transform.position, target.position);
+            if (distance < 10.5f)
+            {
+                spawnTimer += Time.deltaTime;
+                if (spawnTimer > 1f)
+                {
+                    spawnTimer = 0;
+                    Instantiate(enemy, transform.position, Quaternion.Euler(0, 0, 0));
+                }
+                
+            }
         }
     }
 

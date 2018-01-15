@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerScript : MonoBehaviour {
     private Animator anim;
@@ -10,6 +11,10 @@ public class playerScript : MonoBehaviour {
     public pauseMenu pauseMenu;
     public bulletShooter bs;
     public GameObject deathUI;
+    public int targetFPS = 60;
+    public Transform shield;
+    public Sprite[] laserBeamSprites;
+    public Image laserBeamImage;
     // Use this for initialization
     void Start () {
         anim = gameObject.GetComponent<Animator>();
@@ -18,11 +23,18 @@ public class playerScript : MonoBehaviour {
         isAliveAnim = true;
         deathTimer = 0f;
         deathUI.SetActive(false);
+        Application.targetFrameRate = targetFPS;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        laserBeamImage.sprite = laserBeamSprites[bs.laserAmmo / 10];
+        QualitySettings.vSyncCount = 0;
         bs.isAlive = isAliveAnim;
+        if (Application.targetFrameRate != targetFPS)
+        {
+            Application.targetFrameRate = targetFPS;
+        }
         if (isAliveAnim == false)
         {
             anim.SetBool("isAlive", false);
@@ -39,6 +51,26 @@ public class playerScript : MonoBehaviour {
             deathUI.SetActive(true);
             
         }
+
+        if (Input.GetKey(KeyCode.Alpha1)) {
+            targetFPS = 30;
+        }
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            targetFPS = 45;
+        }
+        if (Input.GetKey(KeyCode.Alpha3))
+        {
+            targetFPS = 60;
+        }
+        //if (Input.GetKey(KeyCode.A))
+        //{
+        //    shield.Rotate(0, 0.2f * Time.deltaTime, -1f);
+        //}
+        //if (Input.GetKey(KeyCode.D))
+        //{
+        //    shield.Rotate(0, 0.2f * Time.deltaTime, 1f);
+        //}
 
     }
 
