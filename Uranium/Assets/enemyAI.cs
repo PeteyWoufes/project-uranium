@@ -20,6 +20,8 @@ public class enemyAI : MonoBehaviour {
     public Rigidbody2D rb2d;
     public Vector3 vector;
     public bulletShooter bS;
+    public GameObject enemyDeathSound;
+
 
 
     // PeteyWoufes, 22/11/17
@@ -38,6 +40,7 @@ public class enemyAI : MonoBehaviour {
             enemyManager.enemyKillCount += 1;
             enemyManager.difficultyNumber += 1;
             bS.laserAmmo += 10;
+            GameObject instance = Instantiate(enemyDeathSound, transform.position, transform.rotation) as GameObject;
             Destroy(gameObject);
         }
 
