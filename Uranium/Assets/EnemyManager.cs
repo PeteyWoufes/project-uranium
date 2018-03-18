@@ -29,7 +29,7 @@ public class EnemyManager : MonoBehaviour {
 
     void ScoreCheck()
     {
-        score.text = "Enemies killed: " + enemyKillCount;
+        score.text = "Kills: " + enemyKillCount;
         highScore.text = "High score: " + highestKillCount;
         if (enemyKillCount > highestKillCount)
         {
@@ -48,8 +48,8 @@ public class EnemyManager : MonoBehaviour {
     { 
         if (difficultyNumber > 12)
         {
-            spawnTime *= 0.80f;
-            enemyAI.speed *= 1.2f;
+            spawnTime *= 0.95f;
+            enemyAI.speed *= 1.05f;
             difficultyNumber = 0;
         }
     }

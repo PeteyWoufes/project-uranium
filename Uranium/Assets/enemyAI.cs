@@ -21,6 +21,7 @@ public class enemyAI : MonoBehaviour {
     public Vector3 vector;
     public bulletShooter bS;
     public GameObject enemyDeathSound;
+    public GameObject laserBeam;
 
 
 
@@ -51,6 +52,8 @@ public class enemyAI : MonoBehaviour {
         if (other.CompareTag("laserBeam"))
         {
             Destroy(gameObject);
+            enemyManager.enemyKillCount += 1;
+            enemyManager.difficultyNumber += 1;
             bS.laserAmmo += 10;
         }
 
@@ -144,6 +147,7 @@ public class enemyAI : MonoBehaviour {
             {
                 anim.SetBool("laserEnabled", false);
             }
+
         }
     }
 

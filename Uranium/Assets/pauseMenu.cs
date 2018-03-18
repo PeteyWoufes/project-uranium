@@ -9,6 +9,9 @@ public class pauseMenu : MonoBehaviour {
     public bool isPaused;
     public GameObject pauseMenuUI;
     public playerScript pS;
+    public Texture2D cursor;
+    public CursorMode cursorMode = CursorMode.Auto;
+    public Vector2 hotSpot = Vector2.zero;
 	
 	void Update () {
         PauseCheck();
@@ -45,5 +48,10 @@ public class pauseMenu : MonoBehaviour {
     {
         SceneManager.LoadScene(1);
         Debug.Log("Restart button pressed");
+    }
+
+    public void CursorToggle()
+    {
+       Cursor.SetCursor(cursor, hotSpot, cursorMode);
     }
 }

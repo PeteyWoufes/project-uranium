@@ -13,19 +13,33 @@ public class bulletShooter : MonoBehaviour {
     public int laserAmmo;
     public float readyTimer;
     public AudioSource audioSource;
-    
+    public GameObject laserBeam;
+
+
 
     void Start () {
         isAlive = true;
+        laserAmmo = 100;
 	}
 	
 	void Update () {
         BulletCheck();
         LaserCheck();
         Debug.Log(laserAmmo);
-        
-        
-	}
+        if (Time.timeScale == 0)
+        {
+            laserBeam = gameObject.transform.Find("laserBeam").gameObject;
+            AudioSource aS = laserBeam.GetComponent<AudioSource>();
+            aS.volume = 0;
+        }
+        else if (Time.timeScale == 1)
+        {
+            laserBeam = gameObject.transform.Find("laserBeam").gameObject;
+            AudioSource aS = laserBeam.GetComponent<AudioSource>();
+            aS.volume = 0.448f;
+        }
+
+    }
     
     void BulletCheck ()
     {
