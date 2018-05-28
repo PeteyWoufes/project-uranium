@@ -14,7 +14,7 @@ public class EnemyManager : MonoBehaviour {
     public Text highScore;
     public int highestKillCount;
     public float difficultyNumber;
-    string highScoreKey = "HighScore";
+    public string highScoreKey = "HighScore";
 
     void Start () {
         InvokeRepeating("Spawn", spawnTime, spawnTime);
@@ -49,7 +49,7 @@ public class EnemyManager : MonoBehaviour {
         if (difficultyNumber > 12)
         {
             spawnTime *= 0.95f;
-            enemyAI.speed *= 1.05f;
+            enemyAI.speed *= 1.15f;
             difficultyNumber = 0;
         }
     }
