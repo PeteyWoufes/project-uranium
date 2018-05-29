@@ -8,6 +8,7 @@ public class EnemyManager : MonoBehaviour {
     public GameObject[] enemy;
     public enemyAI enemyAI;
     public float spawnTime = 3f;
+    public float difficultyMultiplier;
     public Transform[] spawnPoints;
     public int enemyKillCount;
     public Text score;
@@ -49,7 +50,7 @@ public class EnemyManager : MonoBehaviour {
         if (difficultyNumber > 12)
         {
             spawnTime *= 0.95f;
-            enemyAI.speed *= 1.15f;
+            enemyAI.speed *= difficultyMultiplier;
             difficultyNumber = 0;
         }
     }

@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class debugMenu : MonoBehaviour {
     private bool debugEnabled;
-    public GameObject debugMenuUI;
+    private bool invinicibilityEnabled;
+    public Collider2D playerCollider;
     public EnemyManager enemyManager;
+    public GameObject debugMenuUI;
+    
 	// Use this for initialization
 	void Start () {
-		
+        debugEnabled = false;
+        invinicibilityEnabled = false;
 	}
 	
 	// Update is called once per frame
@@ -30,6 +34,16 @@ public class debugMenu : MonoBehaviour {
         {
             debugMenuUI.SetActive(false);
         }
+
+
+        if (invinicibilityEnabled)
+        {
+            playerCollider.enabled = false;
+        }
+        else
+        {
+            playerCollider.enabled = true;
+        }
     }
     
     public void ResetHighScore()
@@ -37,5 +51,10 @@ public class debugMenu : MonoBehaviour {
         enemyManager.highestKillCount = 0;
         PlayerPrefs.SetInt(key:enemyManager.highScoreKey, value:enemyManager.enemyKillCount);
         PlayerPrefs.Save();
+    }
+
+    public void ToggleInvincibility()
+    {
+        invinicibilityEnabled = !invinicibilityEnabled;
     }
 }
