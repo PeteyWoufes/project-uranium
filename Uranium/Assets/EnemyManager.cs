@@ -16,8 +16,10 @@ public class EnemyManager : MonoBehaviour {
     public int highestKillCount;
     public float difficultyNumber;
     public string highScoreKey = "HighScore";
+    public float eventTimer;
 
     void Start () {
+        eventTimer = 0;
         InvokeRepeating("Spawn", spawnTime, spawnTime);
         highestKillCount = PlayerPrefs.GetInt(highScoreKey, 0);
     }
@@ -43,6 +45,7 @@ public class EnemyManager : MonoBehaviour {
     {
         ScoreCheck();
         DifficultyCheck();
+        EventCheck();
     }
 
     void DifficultyCheck()
@@ -52,6 +55,37 @@ public class EnemyManager : MonoBehaviour {
             spawnTime *= 0.95f;
             enemyAI.speed *= difficultyMultiplier;
             difficultyNumber = 0;
+        }
+        
+    }
+
+    void EventCheck()
+    {
+        eventTimer += Time.deltaTime;
+        if (eventTimer >= 25)
+        {
+            Spawn();
+            Spawn();
+            Spawn();
+            Spawn();
+            Spawn();
+            Spawn();
+            Spawn();
+            Spawn();
+            Spawn();
+            Spawn();
+            Spawn();
+            Spawn();
+            Spawn();
+            Spawn();
+            Spawn();
+            Spawn();
+            Spawn();
+            Spawn();
+            Spawn();
+            Spawn();
+            Debug.Log("eventTimer = 25; resetting to 0");
+            eventTimer = 0;
         }
     }
 }
