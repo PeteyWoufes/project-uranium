@@ -136,8 +136,7 @@ public class enemyAI : MonoBehaviour {
             }
             else
             {
-               
-                laserEnabled = false;
+               // laserEnabled = false;
             }
             if (laserEnabled == true)
             {

@@ -11,11 +11,16 @@ public class playerScript : MonoBehaviour {
     public pauseMenu pauseMenu;
     public bulletShooter bs;
     public GameObject deathUI;
+    public int playerHealthCurrent;
+    public int playerHealthMax;
     public int targetFPS = 60;
     public Transform shield;
     public Sprite[] laserBeamSprites;
     public Image laserBeamImage;
-    // Use this for initialization
+
+    // TEMP
+    public Text playerHealth;
+
     void Start () {
         anim = gameObject.GetComponent<Animator>();
         anim2 = gameObject.GetComponent<Animation>();
@@ -24,10 +29,11 @@ public class playerScript : MonoBehaviour {
         deathTimer = 0f;
         deathUI.SetActive(false);
         Application.targetFrameRate = targetFPS;
+        playerHealthCurrent = playerHealthMax;
     }
 	
-	// Update is called once per frame
 	void Update () {
+        HealthCheck();
         laserBeamImage.sprite = laserBeamSprites[bs.laserAmmo / 10];
         QualitySettings.vSyncCount = 0;
         bs.isAlive = isAliveAnim;
@@ -78,12 +84,22 @@ public class playerScript : MonoBehaviour {
     {
         if (other.CompareTag("Enemy"))
         {
-            isAliveAnim = false;
+            playerHealthCurrent -= 2;
+            Destroy(other);
         }
     }
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
+        {
+            playerHealthCurrent -= 3;
+        }
+    }
+
+    void HealthCheck()
+    {
+        playerHealth.text = "Population: " + playerHealthCurrent;
+        if (playerHealthCurrent <= 1)
         {
             isAliveAnim = false;
         }
